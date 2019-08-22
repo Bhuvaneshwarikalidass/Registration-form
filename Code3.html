@@ -1,0 +1,96 @@
+<!DOCTYPE html5>
+<html lang="en">
+
+<head>
+    <title>JS-Registration form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        p1,
+        p2 {
+            color: crimson;
+        }
+        
+        fieldset {
+            width: 800px;
+        }
+    </style>
+    <script>
+        function fill() {
+            var firstname = document.getElementById("firstname").value;
+            var lastname = document.getElementById("lastname").value;
+            var male = document.getElementById("male").checked;
+            var female = document.getElementById("female").checked;
+            var address = document.getElementById("address").value;
+            var mobileno = document.getElementById("mobileno").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmpassword = document.getElementById("confirmpassword").value;
+
+
+            if (firstname == "" || lastname == "" || address == "" || mobileno == "" || email == "" || password == "") {
+                alert("Kindly fill in all fields");
+                return false;
+            }
+            if (male == false && female == false) {
+                alert("Select one Gender");
+                return false;
+            }
+            if (mobileno.search(/[0-9]/)) {
+                alert("Mobile number must have numbers");
+                return false;
+            }
+
+
+            if (password.length < 8) {
+                alert("password must contain 8 letters");
+                return false;
+            }
+            if (password.search(/[a-z]/) == -1) {
+                alert("Password must contain one small letter");
+                return false;
+            } else if (password.search(/[A-Z]/) == -1) {
+                alert("Password must contain one Capital letter");
+                return false;
+            } else if (password.search(/[0-9]/) == -1) {
+                alert("Password must contain one number");
+                return false;
+            } else if (password.search(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\[\]\{\}\;\'\:\"\,\.\/\<\>\?\~\`]/) == -1) {
+                alert("Password must contain one Special character");
+                return false;
+            } else if (password != confirmpassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Registration form</h1>
+
+    <form action="Submission.html" method="GET" onsubmit="return fill();">
+        <fieldset class="container">
+            <legend>Registration form</legend>
+            Firstname:<input type="text" name="Firstname" id="firstname"><br><br> Lastname:
+            <input type="text " name="Lastname " id="lastname"><br><br> Gender: Male <input type="radio" name="Gender " value="Male" id="male"> Female
+            <input type="radio" name="Gender" value="Female" id="female"><br>
+            <p1>Select one Gender</p1><br><br> Address:
+            <textarea name="address " id="address"></textarea><br><br> Country:
+            <select name="Country">
+            <option>India</option>
+            <option>China</option>
+            <option>Afghanistan</option>
+            <option>America</option>
+          </select><br><br>Mobile no:<input type="text " name="mobileno " id="mobileno"><br><br> Email:
+            <input type="text " name="emailid " id="email"><br><br> Password:
+            <input type="password " name="password " id="password"><br>
+            <p2>Password must be in 8 characters and must have one capital letter, one small letter, one number and one special character</p2><br><br> Confirm Password:<input type="password " name="confirm password " id="confirmpassword"><br><br>
+            <input type="submit" value="Submit ">
+        </fieldset>
+    </form>
+</body>
+
+</html>
