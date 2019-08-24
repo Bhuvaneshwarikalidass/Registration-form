@@ -26,6 +26,7 @@
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var confirmpassword = document.getElementById("confirmpassword").value;
+            var country = document.getElementById("country");
 
 
             if (firstname == "" || lastname == "" || address == "" || mobileno == "" || email == "" || password == "") {
@@ -36,8 +37,18 @@
                 alert("Select one Gender");
                 return false;
             }
+            if (country.selectedIndex == 0) {
+                alert("Select one country");
+                return false;
+            }
+
             if (mobileno.search(/[0-9]/)) {
                 alert("Mobile number must have numbers");
+                return false;
+            }
+
+            if (mobileno.length != 10) {
+                alert("Mobile no must be 10 digits");
                 return false;
             }
 
@@ -79,7 +90,8 @@
             <input type="radio" name="Gender" value="Female" id="female"><br>
             <p1>Select one Gender</p1><br><br> Address:
             <textarea name="address " id="address"></textarea><br><br> Country:
-            <select name="Country">
+            <select name="Country" id="country">
+            <option value ="Select country">Select one</option>
             <option>India</option>
             <option>China</option>
             <option>Afghanistan</option>
